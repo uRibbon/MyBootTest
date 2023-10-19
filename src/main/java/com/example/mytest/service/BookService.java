@@ -90,6 +90,9 @@ public class BookService {
         Book existBook = bookRepository.findById(bookRequestForm.getId()).orElseThrow(() ->
                 new BusinessException(bookRequestForm.getId() + "Book Is Not Found", HttpStatus.NOT_FOUND));
         existBook.setTitle(bookRequestForm.getTitle());
+        existBook.setAuthor(bookRequestForm.getAuthor());
+        existBook.setIsbn(bookRequestForm.getIsbn());
+        existBook.setGenre(bookRequestForm.getGenre());
     }
 
 }
