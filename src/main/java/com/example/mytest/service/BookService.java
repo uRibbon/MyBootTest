@@ -1,6 +1,7 @@
 package com.example.mytest.service;
 
 import com.example.mytest.dto.BookRequestDTO;
+import com.example.mytest.dto.BookRequestForm;
 import com.example.mytest.dto.BookResponseDTO;
 import com.example.mytest.entity.Book;
 import com.example.mytest.exception.BusinessException;
@@ -83,4 +84,12 @@ public class BookService {
                 .orElseThrow(() -> new BusinessException(id + "Book Is Not Found", HttpStatus.NOT_FOUND));
         bookRepository.delete(book);
     }
+
+    // form 수정
+    public void updateBookForm(BookRequestForm bookRequestForm) {
+        Book existBook = bookRepository.findById(bookRequestForm.getId()).orElseThrow(() ->
+                new BusinessException(bookRequestForm.getId() + "Book Is Not Found", HttpStatus.NOT_FOUND));
+        existBook.setTitle(bookRequestForm.getTitle());
+    }
+
 }
