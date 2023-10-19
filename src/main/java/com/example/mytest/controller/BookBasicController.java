@@ -17,7 +17,6 @@ public class BookBasicController {
     @Autowired
     private BookRepository bookRepository;
 
-
     // 등록
     @PostMapping
     public Book create(@RequestBody Book book) {
